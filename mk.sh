@@ -1,6 +1,10 @@
 #!/bin/bash
 
-PROJECT_FOLDER=/home/rvl/projects/worldticket/maven
+if [ -z "$PROJECT_FOLDER" ]
+then
+    echo "Environment variable PROJECT_FOLDER needs to be specified"
+    exit 1
+fi
 
 SKIP_TESTS=-DskipTests
 CLEAN_TARGET=
@@ -24,8 +28,7 @@ then
 	echo $'Compiles maven modules in specified order\n'
 	echo $'Skips tests and targets cleaning by default\n'
 	echo "Options:"
-	printf "%s %s" "$*compiles maven target with 'clean' phase"
-	echo "-c    "
+	echo "-c    compiles maven target with 'clean' phase"
 	echo "-t    compiles maven target with 'test' phase"
 	exit 0
 fi
