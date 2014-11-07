@@ -49,9 +49,9 @@ do
         ;;
     *)
         echo "Compile and test $arg..."
-        echo mvn -f $PROJECT_FOLDER/$arg/pom.xml "$CLEAN_TARGET"install $SKIP_TESTS >> output.log
+        mvn -f $PROJECT_FOLDER/$arg/pom.xml "$CLEAN_TARGET"install $SKIP_TESTS >> output.log
         ((COMPLETED_COUNTER++))
-        echo -ne "Completed: $((100-100/$COMPLETED_COUNTER))%\r"
+        echo -ne "Completed $COMPLETED_COUNTER of $ARG_COUNTER\r"
         sleep 1
         ;;
   esac
